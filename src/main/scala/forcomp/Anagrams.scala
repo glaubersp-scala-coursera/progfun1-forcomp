@@ -1,7 +1,8 @@
 package forcomp
+
 import scala.collection.immutable
 
-object Anagrams {
+object Anagrams extends AnagramsInterface {
 
   /** A word is simply a `String`. */
   type Word = String
@@ -23,6 +24,35 @@ object Anagrams {
   type Occurrence = (Char, Int)
   type Occurrences = List[Occurrence]
 
+  /** The dictionary is simply a sequence of words.
+    * It is predefined and obtained as a sequence using the utility method `loadDictionary`.
+    */
+  val dictionary: List[Word] = Dictionary.loadDictionary
+
+  /** Converts the word into its character occurrence list.
+    *
+    * Note: the uppercase and lowercase version of the character are treated as the
+    * same character, and are represented as a lowercase character in the occurrence list.
+    *
+    * Note: you must use `groupBy` to implement this method!
+    */
+  def wordOccurrences(w: Word): Occurrences = {
+    w.map(c => (1, c.toLower))
+      .groupBy(p => p._2)
+      .toList
+      .map(p => (p._1, p._2.length))
+      .sortBy(p => p._1)
+  }
+
+  /** Converts a sentence into its character occurrence list. */
+  def sentenceOccurrences(s: Sentence): Occurrences = {
+    s.flatMap(w => wordOccurrences(w))
+      .groupBy(p => p._1)
+      .toList
+      .map(p => (p._1, p._2.foldLeft(0)((acc, el) => acc + el._2)))
+      .sortBy(p => p._1)
+  }
+
   /** The `dictionaryByOccurrences` is a `Map` from different occurrences to a sequence of all
     *  the words that have that occurrence count.
     *  This map serves as an easy way to obtain all the anagrams of a word given its occurrence list.
@@ -39,40 +69,11 @@ object Anagrams {
     *
     */
   lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]] =
-    loadDictionary.groupBy(s => wordOccurrences(s))
-
-  /** The dictionary is simply a sequence of words.
-    *  It is predefined and obtained as a sequence using the utility method `loadDictionary`.
-    */
-  val dictionary: List[Word] = loadDictionary
-
-  /** Converts a sentence into its character occurrence list. */
-  def sentenceOccurrences(s: Sentence): Occurrences = {
-    s.flatMap(w => wordOccurrences(w))
-      .groupBy(p => p._1)
-      .toList
-      .map(p => (p._1, p._2.foldLeft(0)((acc, el) => acc + el._2)))
-      .sortBy(p => p._1)
-  }
+    Dictionary.loadDictionary.groupBy(s => wordOccurrences(s))
 
   /** Returns all the anagrams of a given word. */
   def wordAnagrams(word: Word): List[Word] =
     dictionaryByOccurrences.getOrElse(wordOccurrences(word), List())
-
-  /** Converts the word into its character occurrence list.
-    *
-    *  Note: the uppercase and lowercase version of the character are treated as the
-    *  same character, and are represented as a lowercase character in the occurrence list.
-    *
-    *  Note: you must use `groupBy` to implement this method!
-    */
-  def wordOccurrences(w: Word): Occurrences = {
-    w.map(c => (1, c.toLower))
-      .groupBy(p => p._2)
-      .toList
-      .map(p => (p._1, p._2.length))
-      .sortBy(p => p._1)
-  }
 
   /** Returns the list of all subsets of the occurrence list.
     *  This includes the occurrence itself, i.e. `List(('k', 1), ('o', 1))`
@@ -100,17 +101,19 @@ object Anagrams {
     occurrences match {
       case Nil => List(List())
       case x :: xs => {
-        var xsCombinations = combinations(xs)
+        val xsCombinations = combinations(xs)
         val tempHeadElements: immutable.Seq[(Char, Int)] =
           for (i <- 1 to x._2) yield (x._1, i)
         val headElements: Occurrences = tempHeadElements.toList
-        var resp: Set[Occurrences] = Set.empty
-        for (elem <- headElements) {
-          val respElem: List[Occurrences] =
-            xsCombinations.map(n => List(elem) ::: n) ::: xsCombinations
-          resp = resp ++ respElem
-        }
-        resp.toList
+
+        val resp: List[Occurrences] =
+          headElements.flatMap(elem => {
+            val respElem: List[Occurrences] =
+              xsCombinations.map(n => List(elem) ::: n) ::: xsCombinations
+            respElem
+          })
+
+        resp
       }
     }
   }
@@ -203,4 +206,24 @@ object Anagrams {
         xxs.toList
       }
     }
+}
+
+object Dictionary {
+  def loadDictionary: List[String] = {
+    val wordstream = Option {
+      getClass.getResourceAsStream(List("forcomp", "linuxwords.txt").mkString("/", "/", ""))
+    } getOrElse {
+      sys.error("Could not load word list, dictionary file not found")
+    }
+    try {
+      val s = scala.io.Source.fromInputStream(wordstream)
+      s.getLines.toList
+    } catch {
+      case e: Exception =>
+        println("Could not load word list: " + e)
+        throw e
+    } finally {
+      wordstream.close()
+    }
+  }
 }

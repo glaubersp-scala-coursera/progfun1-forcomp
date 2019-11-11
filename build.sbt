@@ -1,16 +1,10 @@
-name := course.value + "-" + assignment.value
+course := "progfun1"
+assignment := "forcomp"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.13.0"
 
-scalacOptions ++= Seq("-deprecation")
+scalacOptions ++= Seq("-language:implicitConversions", "-deprecation")
 
-// grading libraries
-libraryDependencies += "junit" % "junit" % "4.10" % Test
+libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
 
-// for funsets
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4"
-
-// include the common dir
-commonSourcePackages += "common"
-
-courseId := "bRPXgjY9EeW6RApRXdjJPw"
+testOptions in Test += Tests.Argument(TestFrameworks.JUnit, "-a", "-v", "-s")

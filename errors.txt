@@ -1,8 +1,7 @@
-Your overall score for this assignment is 8.42 out of 10.00
-
+Your overall score for this assignment is 7.93 out of 10.00
 
 The code you submitted did not pass all of our tests: your submission achieved a score of
-6.46 out of 8.00 in our tests.
+7.93 out of 10.00 in our tests.
 
 In order to find bugs in your code, we advise to perform the following steps:
  - Take a close look at the test output that you can find below: it should point you to
@@ -15,12 +14,6 @@ In order to find bugs in your code, we advise to perform the following steps:
 
 Below you can find a short feedback for every individual test that failed.
 
-Our automated style checker tool found issues in your code with respect to coding style: it
-computed a style score of 1.96 out of 2.00 for your submission. See below for detailed feedback.
-
-======== LOG OF FAILED TESTS ========
-Your solution achieved a testing score of 210 out of 260.
-
 Below you can see a short feedback for every test that failed,
 indicating the reason for the test failure and how many points
 you lost for each individual test.
@@ -30,12 +23,19 @@ JVM. Such crashes can arise due to infinite non-terminating
 loops or recursion (StackOverflowException) or excessive memory
 consumption (OutOfMemoryException).
 
-[Test Description] sentence anagrams: Lukas Rytz
-[Observed Error] Set(List("rust", "ruts"), List("sultry"), List("Kay"), List("as"), List("Klaus"), List("Karl", "lark"), List("arts", "rats", "star"), List("sulky"), List("rut"), List("Stu"), List("sat"), List("Ursa"), List("stay"), List("satyr", "stray", "trays"), List("lays", "slay"), List("ray"), List("Lutz"), List("sulk"), List("lurks"), List("larks"), List("salty"), List("say"), List("rays"), List("try"), List("talk"), List("truly"), List("stark"), List("lusty"), List("starkly"), List("at"), List("Ku"), List("Saul"), List("lust"), List("rusty"), List(), List("task"), List("ultra"), List("tau"), List("art", "rat", "tar"), List("Kurt", "Truk"), List("Salk"), List("slur"), List("lay"), List("Katz"), List("Sault", "Tulsa"), List("last", "salt", "slat"), List("surly"), List("lazy"), List("Lars"), List("Salz"), List("Lura", "Raul"), List("tray"), List("sly"), List("lurk"), List("us"), List("stalk", "talks"), List("ark"), List("Al"), List("ask"), List("Sal"), List("sky"), List("Lyra")) did not equal Set(List("Ku", "Salz", "try"), List("Katz", "surly"), List("Salz", "try", "Ku"), List("Ku", "try", "Salz"), List("Salz", "Ku", "try"), List("try", "Ku", "Salz"), List("surly", "Katz"), List("try", "Salz", "Ku"))
-[Lost Points] 10
+======== LOG OF FAILED TESTS ========
 
-[Test Description] sentence anagrams: I love you
-[Observed Error] Set(List("Eli", "lie"), List("Leo"), List("Lou"), List("Ely"), List("ivy"), List("love"), List("Loy"), List("levy"), List("oil"), List("you"), List("Io"), List(), List("Lev"), List("lieu"), List("oily"), List("olive"), List("vie"), List("evil", "Levi", "live", "veil", "vile")) did not equal Set(List("Lev", "you", "Io"), List("Io", "you", "Lev"), List("Io", "Lev", "you"), List("you", "Io", "Lev"), List("you", "olive"), List("you", "Lev", "Io"), List("Lev", "Io", "you"), List("olive", "you"))
-[Lost Points] 10
+[Test Description] sentence anagrams$colon Lukas Rytz (10pts)(forcomp.AnagramsSuite)
+[Observed Error] expected:<HashSet(List(Ku, Salz, try), List(Salz, try, Ku), List(Ku, try, Salz), List(Salz, Ku, try), List(Katz, surly), List(try, Salz, Ku), List(try, Ku, Salz), List(surly, Katz))> but was:<HashSet(List(sultry), List(Klaus), List(lust), List(Lura, Raul), List(Katz), List(Karl, lark), List(Sal), List(Kay), List(as), List(rust, ruts), List(arts, rats, star), List(sulky), List(rut), List(Stu), List(sat), List(Ursa), List(stay), List(satyr, stray, trays), List(lays, slay), List(sulk), List(ray), List(Lutz), List(lurks), List(larks), List(salty), List(say), List(rays), List(try), List(talk), List(truly), List(stark), List(lusty), List(starkly), List(at), List(Ku), List(Saul), List(rusty), List(), List(task), List(ultra), List(tau), List(art, rat, tar), List(Sault, Tulsa), List(stalk, talks), List(Salk), List(slur), List(lay), List(last, salt, slat), List(surly), List(lazy), List(Lars), List(Salz), List(tray), List(sly), List(lurk), List(Kurt, Truk), List(us), List(ark), List(Al), List(ask), List(sky), List(Lyra))>
 
-[Test Description] sentence anagrams: Yell Xerxes
+[Test Description] sentence anagrams$colon Linux rulez (10pts)(forcomp.AnagramsSuite)
+[Observed Error] expected:<HashSet(List(Zulu, nil, Rex), List(Rex, Uzi, null), List(rulez, Linux), List(Zulu, Rex, Lin), List(Zulu, Rex, nil), List(Rex, Lin, Zulu), List(Rex, Zulu, nil), List(Lin, Zulu, Rex), List(null, Uzi, Rex), List(Zulu, Lin, Rex), List(Linux, rulez), List(Uzi, null, Rex), List(Uzi, Rex, null), List(Lin, Rex, Zulu), List(nil, Rex, Zulu), List(nil, Zulu, Rex), List(null, Rex, Uzi), List(Rex, Zulu, Lin), List(Rex, nil, Zulu), List(Rex, null, Uzi))> but was:<HashSet(List(rill), List(lien, line, Neil, Nile), List(nu), List(null), List(Liz), List(Zen), List(ire), List(urine), List(Len), List(re), List(Lin, nil), List(Eli, lie), List(lure, rule), List(en), List(), List(Linux), List(lieu), List(Zulu), List(Unix), List(Rex), List(liner), List(run, urn), List(Uzi), List(Nell), List(ill), List(rulez), List(Uri), List(ex), List(rein), List(ruin), List(rue), List(in))>
+
+[Test Description] sentence anagrams$colon Yell Xerxes (10pts)(forcomp.AnagramsSuite)
+[Observed Error] expected:<HashSet(List(yell, Xerxes), List(sex, yell, Rex), List(Lyle, sex, Rex), List(yell, sex, Rex), List(sex, Rex, yell), List(Rex, Lyle, sex), List(sex, Rex, Lyle), List(Xerxes, Lyle), List(Rex, sex, Lyle), List(Lyle, Xerxes), List(Xerxes, yell), List(Lyle, Rex, sex), List(Rex, yell, sex), List(Rex, sex, yell), List(yell, Rex, sex), List(sex, Lyle, Rex))> but was:<HashSet(List(Ely), List(eel, lee), List(yes), List(sell), List(sly), List(leery), List(Reese), List(eels, else, lees), List(eyer), List(resell, seller), List(seer), List(eyers), List(re), List(reels), List(leer, reel), List(ere), List(eye), List(), List(sexy), List(Rex), List(sex), List(Lyle, yell), List(see), List(Elysee, Seeley), List(eyes), List(ex), List(Xerxes), List(lyre, rely), List(yeller), List(rye))>
+
+[Test Description] sentence anagrams$colon Heather (10pts)(forcomp.AnagramsSuite)
+[Observed Error] expected:<HashSet(List(hare, the), List(at, he, her), List(he, earth), List(at, her, he), List(he, art, he), List(et, her, ah), List(hear, the), List(he, hat, re), List(re, the, ha), List(heat, her), List(her, et, ha), List(there, ha), List(he, hater), List(ah, ether), List(re, ah, the), List(he, he, art), List(hat, here), List(re, heath), List(et, her, ha), List(he, re, hat), List(three, ha), List(three, ah), List(her, Thea), List(hat, re, he), List(heather), List(re, ha, the), List(the, hare), List(ah, three), List(heart, he), List(her, heat), List(he, at, her), List(heath, re), List(the, Hera), List(ha, three), List(ha, re, the), List(the, hear), List(et, ha, her), List(ah, et, her), List(ah, her, et), List(Thea, her), List(re, the, ah), List(he, he, rat), List(rat, he, he), List(ha, her, et), List(he, tar, he), List(Rhea, the), List(ether, ah), List(he, rat, he), List(tar, he, he), List(art, he, he), List(ah, re, the), List(hater, he), List(he, heart), List(et, ah, her), List(her, et, ah), List(the, re, ah), List(re, hat, he), List(earth, he), List(her, at, he), List(hat, he, re), List(the, Rhea), List(there, ah), List(ah, there), List(he, he, tar), List(ha, ether), List(Hera, the), List(ha, the, re), List(ah, the, re), List(the, ha, re), List(hate, her), List(ha, there), List(he, her, at), List(here, hat), List(her, he, at), List(ha, et, her), List(the, ah, re), List(her, ah, et), List(her, hate), List(ether, ha), List(re, he, hat), List(her, ha, et), List(the, re, ha))> but was:<HashSet(List(et), List(tree), List(heather), List(ere), List(ether, there, three), List(eater), List(earth, hater, heart), List(ah, ha), List(hare, hear, Hera, Rhea), List(hat), List(the), List(hart), List(are, ear, era, Rae), List(re), List(rate, tear), List(heath), List(at), List(here), List(her), List(), List(ate, eat, tea), List(art, rat, tar), List(hate, heat, Thea), List(he), List(heater))>
+
+[Test Description] sentence anagrams$colon I love you (10pts)(forcomp.AnagramsSuite)
+[Observed Error] expected:<HashSet(List(Io, you, Lev), List(Io, Lev, you), List(you, Io, Lev), List(olive, you), List(Lev, you, Io), List(you, olive), List(you, Lev, Io), List(Lev, Io, you))> but was:<HashSet(List(Loy), List(you), List(), List(Lev), List(lieu), List(oily), List(olive), List(vie), List(evil, Levi, live, veil, vile), List(Leo), List(Lou), List(Ely), List(ivy), List(love), List(levy), List(oil), List(Eli, lie), List(Io))>
